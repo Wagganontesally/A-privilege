@@ -181,12 +181,9 @@ async function sendAndRedirect(){
     }
 
     // SEND TO GOOGLE SHEETS
-    await fetch(SCRIPT_URL, {
+    fetch(SCRIPT_URL, {
     method: "POST",
-    headers: {
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
+    body: new URLSearchParams({
         username: username
     })
 });
