@@ -172,41 +172,46 @@ function openModal(){
 
 async function sendAndRedirect(){
 
-    const username =
-    document.getElementById("username").value.trim();
+    const username = document.getElementById("username").value.trim();
 
     if(!username){
         alert("Enter username");
         return;
     }
 
-    // DEVICE INFO DETECTION
     const userAgent = navigator.userAgent;
 
-const device = /Mobi|Android|iPhone/i.test(userAgent)
-  ? "Mobile"
-  : "Desktop";
+    // DEVICE
+    const device = /Mobi|Android|iPhone/i.test(userAgent)
+        ? "Mobile"
+        : "Desktop";
 
-let browser = "Unknown";
-if (userAgent.includes("Chrome")) browser = "Chrome";
-else if (userAgent.includes("Firefox")) browser = "Firefox";
-else if (userAgent.includes("Safari") && !userAgent.includes("Chrome")) browser = "Safari";
-else if (userAgent.includes("Edg")) browser = "Edge";
+    // BROWSER
+    let browser = "Unknown";
+    if (userAgent.includes("Chrome") && !userAgent.includes("Edg")) browser = "Chrome";
+    else if (userAgent.includes("Firefox")) browser = "Firefox";
+    else if (userAgent.includes("Safari") && !userAgent.includes("Chrome")) browser = "Safari";
+    else if (userAgent.includes("Edg")) browser = "Edge";
 
-let os = "Unknown";
-if (userAgent.includes("Windows")) os = "Windows";
-else if (userAgent.includes("Android")) os = "Android";
-else if (userAgent.includes("iPhone") || userAgent.includes("iOS")) os = "iPhone";
-else if (userAgent.includes("Mac")) os = "MacOS";
+    // OS
+    let os = "Unknown";
+    if (userAgent.includes("Windows")) os = "Windows";
+    else if (userAgent.includes("Android")) os = "Android";
+    else if (userAgent.includes("iPhone") || userAgent.includes("iOS")) os = "iPhone";
+    else if (userAgent.includes("Mac")) os = "MacOS";
 
-    // SEND TO GOOGLE SHEETS
+    console.log("DEBUG:", { username, device, browser, os });
+
     await fetch(SCRIPT_URL, {
         method: "POST",
+        headers: {
+            "Content-Type": "text/plain"
+        },
         body: JSON.stringify({
-            username: username,
-            device: device,
-            browser: browser,
-            os: os
+            username,
+            device,
+            browser,
+            os
         })
     });
 
