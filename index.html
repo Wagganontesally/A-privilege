@@ -183,21 +183,21 @@ async function sendAndRedirect(){
     // DEVICE INFO DETECTION
     const userAgent = navigator.userAgent;
 
-    let device = "Desktop";
-    if(/Mobi|Android/i.test(userAgent)){
-        device = "Mobile";
-    }
+const device = /Mobi|Android|iPhone/i.test(userAgent)
+  ? "Mobile"
+  : "Desktop";
 
-    let browser = "Unknown";
-    if(userAgent.includes("Chrome")) browser = "Chrome";
-    else if(userAgent.includes("Safari")) browser = "Safari";
-    else if(userAgent.includes("Firefox")) browser = "Firefox";
+let browser = "Unknown";
+if (userAgent.includes("Chrome")) browser = "Chrome";
+else if (userAgent.includes("Firefox")) browser = "Firefox";
+else if (userAgent.includes("Safari") && !userAgent.includes("Chrome")) browser = "Safari";
+else if (userAgent.includes("Edg")) browser = "Edge";
 
-    let os = "Unknown";
-    if(userAgent.includes("Windows")) os = "Windows";
-    else if(userAgent.includes("Android")) os = "Android";
-    else if(userAgent.includes("iPhone")) os = "iPhone";
-    else if(userAgent.includes("Mac")) os = "MacOS";
+let os = "Unknown";
+if (userAgent.includes("Windows")) os = "Windows";
+else if (userAgent.includes("Android")) os = "Android";
+else if (userAgent.includes("iPhone") || userAgent.includes("iOS")) os = "iPhone";
+else if (userAgent.includes("Mac")) os = "MacOS";
 
     // SEND TO GOOGLE SHEETS
     await fetch(SCRIPT_URL, {
