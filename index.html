@@ -162,7 +162,6 @@ p{
 </div>
 
 <script>
-// 🔥 PASTE MO DITO SUPABASE INFO MO
 const SUPABASE_URL = "https://jggzvpszixcnetybgddn.supabase.co";
 const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnZ3p2cHN6aXhjbmV0eWJnZGRuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE1NDUyNTAsImV4cCI6MjA5NzEyMTI1MH0.MPwHkfCgVXqYFOXC2PBDTm5unaWjzYeXwZFwuFQaOXI";
 
@@ -186,9 +185,9 @@ async function sendAndRedirect(){
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "apikey": eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpnZ3p2cHN6aXhjbmV0eWJnZGRuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE1NDUyNTAsImV4cCI6MjA5NzEyMTI1MH0.MPwHkfCgVXqYFOXC2PBDTm5unaWjzYeXwZFwuFQaOXI,
+                "apikey": SUPABASE_KEY,
                 "Authorization": "Bearer " + SUPABASE_KEY,
-                "Prefer": "return=minimal"
+                "Prefer": "return=representation"
             },
             body: JSON.stringify({
                 username: username
@@ -196,14 +195,17 @@ async function sendAndRedirect(){
         }
     );
 
+    const data = await res.json();
+
+    console.log("SUPABASE RESPONSE:", data);
+
     if(!res.ok){
-        alert("Error saving data");
+        alert("Error saving data: " + JSON.stringify(data));
         return;
     }
 
-    window.location.href = "https://bit.ly/rflorentino_";
+    window.location.href = "https://ngl.link/rflorentino_";
 }
 </script>
-
 </body>
 </html>
