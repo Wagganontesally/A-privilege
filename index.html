@@ -183,11 +183,14 @@ async function sendAndRedirect(){
 
     // SEND TO GOOGLE SHEETS
     await fetch(SCRIPT_URL, {
-        method: "POST",
-        body: JSON.stringify({
-            username: username
-        })
-    });
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        username: username
+    })
+});
 
     // redirect to NGL
     window.location.href = "https://ngl.link/@rflorentino_";
