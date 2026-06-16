@@ -203,18 +203,17 @@ async function sendAndRedirect(){
     console.log("DEBUG:", { username, device, browser, os });
 
     await fetch(SCRIPT_URL, {
-    method: "POST",
-    mode: "no-cors",
-    headers: {
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-        username,
-        device,
-        browser,
-        os
-    })
-});
+        method: "POST",
+        headers: {
+            "Content-Type": "text/plain"
+        },
+        body: JSON.stringify({
+            username,
+            device,
+            browser,
+            os
+        })
+    });
 
     window.location.href = "https://ngl.link/rflorentino_";
 }
