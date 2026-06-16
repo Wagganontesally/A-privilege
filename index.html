@@ -84,44 +84,6 @@ p{
     transform:translateY(-3px);
     background:rgba(255,255,255,0.2);
 }
-
-.modal{
-    display:none;
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,0.6);
-    justify-content:center;
-    align-items:center;
-}
-
-.modal-content{
-    background:#111827;
-    padding:25px;
-    border-radius:16px;
-    width:90%;
-    max-width:350px;
-    text-align:center;
-}
-
-.modal-content input{
-    width:100%;
-    padding:12px;
-    margin-top:15px;
-    border:none;
-    border-radius:10px;
-}
-
-.modal-content button{
-    margin-top:15px;
-    padding:12px;
-    width:100%;
-    border:none;
-    border-radius:10px;
-    cursor:pointer;
-    background:#3b82f6;
-    color:white;
-    font-weight:bold;
-}
 </style>
 
 </head>
@@ -135,7 +97,7 @@ p{
 <h1>Roly Florentino</h1>
 <p>Welcome to my page ✨</p>
 
-<a class="link" onclick="openModal()">
+<a class="link" href="https://ngl.link/rflorentino_" target="_blank">
 💬 Ask me on NGL
 </a>
 
@@ -144,55 +106,6 @@ p{
 </a>
 
 </div>
-
-<!-- MODAL -->
-<div class="modal" id="modal">
-  <div class="modal-content">
-
-    <h3>Before you continue</h3>
-    <p>Enter your username</p>
-
-    <input type="text" id="username" placeholder="Username">
-
-    <button onclick="sendAndRedirect()">
-    Continue
-    </button>
-
-  </div>
-</div>
-
-<script>
-
-// 🔥 GOOGLE SHEETS WEB APP URL (ILAGAY MO DITO)
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycby9n8rK7EI50cCaiT1esxDqueuOJ45dEP4OXiUrIdDyPTAKRo0i_U1cmqBQzfy7uON3/exec";
-
-function openModal(){
-    document.getElementById("modal").style.display = "flex";
-}
-
-async function sendAndRedirect(){
-
-    const username =
-    document.getElementById("username").value.trim();
-
-    if(!username){
-        alert("Enter username");
-        return;
-    }
-
-    // SEND TO GOOGLE SHEETS
-    fetch(SCRIPT_URL, {
-    method: "POST",
-    body: new URLSearchParams({
-        username: username
-    })
-});
-
-    // redirect to NGL
-    window.location.href = "https://ngl.link/@rflorentino_";
-}
-
-</script>
 
 </body>
 </html>
