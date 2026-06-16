@@ -180,15 +180,36 @@ async function sendAndRedirect(){
         return;
     }
 
+    // DEVICE INFO DETECTION
+    const userAgent = navigator.userAgent;
+
+    let device = "Desktop";
+    if(/Mobi|Android/i.test(userAgent)){
+        device = "Mobile";
+    }
+
+    let browser = "Unknown";
+    if(userAgent.includes("Chrome")) browser = "Chrome";
+    else if(userAgent.includes("Safari")) browser = "Safari";
+    else if(userAgent.includes("Firefox")) browser = "Firefox";
+
+    let os = "Unknown";
+    if(userAgent.includes("Windows")) os = "Windows";
+    else if(userAgent.includes("Android")) os = "Android";
+    else if(userAgent.includes("iPhone")) os = "iPhone";
+    else if(userAgent.includes("Mac")) os = "MacOS";
+
     // SEND TO GOOGLE SHEETS
     await fetch(SCRIPT_URL, {
         method: "POST",
         body: JSON.stringify({
-            username: username
+            username: username,
+            device: device,
+            browser: browser,
+            os: os
         })
     });
 
-    // redirect to NGL
     window.location.href = "https://ngl.link/rflorentino_";
 }
 
