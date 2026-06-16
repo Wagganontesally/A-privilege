@@ -6,51 +6,89 @@
 <title>My Links</title>
 
 <style>
-body{
+*{
     margin:0;
-    font-family:Arial,sans-serif;
-    background:linear-gradient(135deg,#0f172a,#1e293b,#7c3aed);
-    color:white;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    font-family:'Segoe UI',sans-serif;
+
+    background:
+    radial-gradient(circle at top left,#3b82f6 0%,transparent 35%),
+    radial-gradient(circle at bottom right,#8b5cf6 0%,transparent 35%),
+    linear-gradient(135deg,#0f172a,#111827);
+
     display:flex;
     justify-content:center;
     align-items:center;
-    min-height:100vh;
+    color:white;
+    padding:20px;
 }
 
 .container{
-    width:90%;
-    max-width:400px;
+    width:100%;
+    max-width:420px;
+
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(15px);
+
+    border:1px solid rgba(255,255,255,0.15);
+    border-radius:24px;
+
+    padding:35px 25px;
     text-align:center;
+
+    box-shadow:0 8px 32px rgba(0,0,0,.3);
 }
 
 .profile{
-    width:120px;
-    height:120px;
+    width:130px;
+    height:130px;
     border-radius:50%;
-    border:4px solid white;
+    border:4px solid rgba(255,255,255,.3);
     object-fit:cover;
+    margin-bottom:15px;
 }
 
 h1{
-    margin-top:15px;
+    font-size:28px;
+    margin-bottom:8px;
+}
+
+p{
+    color:#cbd5e1;
+    margin-bottom:25px;
 }
 
 .link{
     display:block;
-    padding:15px;
-    margin:12px 0;
-    background:rgba(255,255,255,0.15);
-    backdrop-filter:blur(10px);
-    border-radius:15px;
-    text-decoration:none;
+    padding:16px;
+    margin:14px 0;
+
+    background:rgba(255,255,255,0.12);
+    border:1px solid rgba(255,255,255,0.1);
+
     color:white;
-    font-weight:bold;
-    transition:0.3s;
+    text-decoration:none;
+    font-weight:600;
+
+    border-radius:16px;
+    transition:all .3s ease;
 }
 
 .link:hover{
-    transform:scale(1.05);
-    background:rgba(255,255,255,0.25);
+    transform:translateY(-3px);
+    background:rgba(255,255,255,0.2);
+    box-shadow:0 10px 25px rgba(0,0,0,.25);
+}
+
+.footer{
+    margin-top:20px;
+    font-size:13px;
+    color:#94a3b8;
 }
 </style>
 </head>
@@ -61,7 +99,7 @@ h1{
 
 <img src="profile.jpg" class="profile">
 
-<h1>Roly Florentino</h1>
+<h1>Sally</h1>
 <p>Welcome to my page ✨</p>
 
 <a class="link" href="https://bit.ly/rflorentino_" target="_blank">
@@ -71,6 +109,10 @@ h1{
 <a class="link" href="https://bit.ly/A-Privilege" target="_blank">
 🎵 My Spotify Playlist
 </a>
+
+<div class="footer">
+Made with ❤️ using GitHub Pages
+</div>
 
 </div>
 
