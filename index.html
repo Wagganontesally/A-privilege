@@ -16,32 +16,51 @@ body{
     min-height:100vh;
     font-family:'Segoe UI',sans-serif;
 
-    background:
-    radial-gradient(circle at top left,#3b82f6 0%,transparent 35%),
-    radial-gradient(circle at bottom right,#8b5cf6 0%,transparent 35%),
-    linear-gradient(135deg,#0f172a,#111827);
-
     display:flex;
     justify-content:center;
     align-items:center;
     color:white;
     padding:20px;
+    overflow:hidden;
+}
+
+/* Background Video */
+#bg-video{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:-2;
+}
+
+/* Dark Overlay */
+body::before{
+    content:"";
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.45);
+    z-index:-1;
 }
 
 .container{
     width:100%;
     max-width:420px;
 
-    background:rgba(255,255,255,0.08);
-    backdrop-filter:blur(15px);
+    background:transparent;
+    backdrop-filter:blur(5px);
 
-    border:1px solid rgba(255,255,255,0.15);
+    border:1px solid rgba(255,255,255,0.2);
     border-radius:24px;
 
     padding:35px 25px;
     text-align:center;
 
-    box-shadow:0 8px 32px rgba(0,0,0,.3);
+    box-shadow:none;
 }
 
 .profile{
@@ -90,20 +109,25 @@ p{
 
 <body>
 
+<!-- Background Video -->
+<video autoplay muted loop playsinline id="bg-video">
+    <source src="background.mp4" type="video/mp4">
+</video>
+
 <div class="container">
 
-<img src="profile.jpg" class="profile">
+    <img src="profile.jpg" class="profile">
 
-<h1>Roly Florentino</h1>
-<p>Welcome to my page ✨</p>
+    <h1>Roly Florentino</h1>
+    <p>Welcome to my page ✨</p>
 
-<a class="link" href="https://urlto.me/2LqQ6" target="_blank">
-💬 Ask me anything on NGL.
-</a>
+    <a class="link" href="https://urlto.me/2LqQ6" target="_blank">
+        💬 Ask me anything on NGL.
+    </a>
 
-<a class="link" href="https://open.spotify.com/playlist/0gIg7sFEfQE1DemfhGhALz" target="_blank">
-🎵 My Spotify Playlist
-</a>
+    <a class="link" href="https://open.spotify.com/playlist/0gIg7sFEfQE1DemfhGhALz" target="_blank">
+        🎵 My Spotify Playlist
+    </a>
 
 </div>
 
